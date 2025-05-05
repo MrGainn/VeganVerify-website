@@ -1,4 +1,4 @@
-import Navbar from "@/components/NavBar";
+import { Navbar } from "@/components/navbar/navbar";
 import { Locale, routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
@@ -38,14 +38,16 @@ export default async function RootLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
   return (
-    <html lang={locale}>
+    <html lang={locale} className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          {children}
-        </NextIntlClientProvider>
+   
+          <NextIntlClientProvider messages={messages}>
+            <Navbar />
+            {children}
+          </NextIntlClientProvider>
+       
       </body>
     </html>
   );
